@@ -1,16 +1,19 @@
+import sys, platform
+
 V_MAJOR = 1
 V_MINOR = 0
+ENGINE_NAME = "hippo"
+PROJECT_NAME = "hippoeditor"
+TOOLS_DIR = "tools"
 
-import sys, platform
 PLATFORM = sys.platform
-
 for x in platform.uname():
   if "microsoft" in x.lower():
     PLATFORM = "windows"
     break
 
 def IsWindows():
-  return PLATFORM == "windows"
+  return PLATFORM == "windows" or PLATFORM == "win32"
 
 def IsLinux():
   return PLATFORM == "linux"
