@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 { 
-  std::cout << "Hello world" << std::endl;
-  Foo();
-  return 0;
+	hippo::Engine& engine = hippo::Engine::Instance();
+	engine.Run();
+	return 0;
 }

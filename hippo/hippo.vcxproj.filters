@@ -7,16 +7,28 @@
     <Filter Include="include\hippo">
       <UniqueIdentifier>{585B60A5-C41B-DCDB-8D56-2559F9D520B8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\hippo\core">
+      <UniqueIdentifier>{D0E2A117-BCC6-626D-2527-5DC0112A4DEF}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\core">
+      <UniqueIdentifier>{C55F2ECF-B12C-89DA-DA45-7782C671BE68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\hippo\core\window.h">
+      <Filter>include\hippo\core</Filter>
+    </ClInclude>
     <ClInclude Include="include\hippo\engine.h">
       <Filter>include\hippo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\window.cpp">
+      <Filter>src\core</Filter>
+    </ClCompile>
     <ClCompile Include="src\engine.cpp">
       <Filter>src</Filter>
     </ClCompile>

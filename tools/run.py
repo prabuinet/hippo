@@ -2,7 +2,7 @@ import globals
 import os, subprocess
 import sys
 
-config = "Debug"
+config = "debug"
 exepath = "{}/bin/{}/{}/".format(os.getcwd(), config, globals.PROJECT_NAME)
 
 ret = 0
