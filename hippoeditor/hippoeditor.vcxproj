@@ -45,7 +45,7 @@
     <IntDir>..\obj\Debug\hippoeditor\</IntDir>
     <TargetName>hippoeditor</TargetName>
     <TargetExt>.exe</TargetExt>
-    <ExternalIncludePath>..\hippo\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>..\hippo\include;..\external\spdlog\include;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -53,7 +53,7 @@
     <IntDir>..\obj\Release\hippoeditor\</IntDir>
     <TargetName>hippoeditor</TargetName>
     <TargetExt>.exe</TargetExt>
-    <ExternalIncludePath>..\hippo\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>..\hippo\include;..\external\spdlog\include;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -103,6 +103,9 @@
   <ItemGroup>
     <ProjectReference Include="..\hippo\hippo.vcxproj">
       <Project>{A573940F-1188-BCC0-DA09-602046DDB8F1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\external\glad\glad.vcxproj">
+      <Project>{DD62977C-C999-980D-7286-7E105E9C140F}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

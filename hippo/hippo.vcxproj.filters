@@ -10,11 +10,17 @@
     <Filter Include="include\hippo\core">
       <UniqueIdentifier>{D0E2A117-BCC6-626D-2527-5DC0112A4DEF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\hippo\managers">
+      <UniqueIdentifier>{55FCF603-41F6-1F56-2A63-B66616FC85C2}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\core">
       <UniqueIdentifier>{C55F2ECF-B12C-89DA-DA45-7782C671BE68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\managers">
+      <UniqueIdentifier>{CAEBB276-B64E-421B-5FD4-7AD14B160E9E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -24,6 +30,15 @@
     <ClInclude Include="include\hippo\engine.h">
       <Filter>include\hippo</Filter>
     </ClInclude>
+    <ClInclude Include="include\hippo\log.h">
+      <Filter>include\hippo</Filter>
+    </ClInclude>
+    <ClInclude Include="include\hippo\managers\logmanager.h">
+      <Filter>include\hippo\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="include\hippo\graphics\mesh.h" />
+    <ClInclude Include="include\hippo\graphics\shader.h" />
+    <ClInclude Include="include\hippo\graphics\rendercommands.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\window.cpp">
@@ -32,5 +47,11 @@
     <ClCompile Include="src\engine.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\managers\logmanager.cpp">
+      <Filter>src\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\mesh.cpp" />
+    <ClCompile Include="src\graphics\shader.cpp" />
+    <ClCompile Include="src\graphics\rendercommands.cpp" />
   </ItemGroup>
 </Project>

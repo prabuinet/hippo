@@ -1,6 +1,7 @@
 #include <hippo/engine.h>
 #include <iostream>
 #include <sdl2/SDL.h>
+#include "log.h"
 
 namespace hippo {
 
@@ -23,6 +24,9 @@ namespace hippo {
 
             while (mIsRunning) {
                 mWindow.PumpEvents();
+
+                mWindow.BeginRender();
+                mWindow.EndRender();
             }
 
             Shutdown();
@@ -33,24 +37,32 @@ namespace hippo {
     {
         bool ret = false;
 
+        mLogManager.Initialize();
+
+        HIPPO_ASSERT(!mIsInitialized, "attempting to initialize twice");
+
+        GetInfo();
+
         if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
-            std::cout << "sdl initialization failed: " << SDL_GetError() << std::endl;            
+            HIPPO_ERROR("sdl initialization failed: {}", SDL_GetError());
         }
         else {
             SDL_version version;
             SDL_VERSION(&version);
-            std::cout << "SDL Version: " << static_cast<int32_t>(version.major)
-                << "." << static_cast<int32_t>(version.minor)
-                << "." << static_cast<int32_t>(version.patch) << "\n";
+            HIPPO_INFO("SDL Version: {}.{}.{}", 
+                static_cast<int32_t>(version.major),
+                static_cast<int32_t>(version.minor),
+                static_cast<int32_t>(version.patch));
 
             if (mWindow.Create()) {
                 ret = true;
                 mIsRunning = true;
+                mIsInitialized = true;
             }
         }
 
         if (!ret) {
-            std::cout << "engine initialization failed. shutting down." << std::endl;
+            HIPPO_ERROR("engine initialization failed. shutting down.");
         }
 
         return ret;
@@ -59,31 +71,39 @@ namespace hippo {
     void Engine::Shutdown()
     {
         mIsRunning = false;
+        mIsInitialized = false;
+
+        // managers - usually shutdown in reverse order
+        mLogManager.Shutdown();
+
         mWindow.Shutdown();
         SDL_Quit();
     }
 
     void Engine::GetInfo() {
+        HIPPO_TRACE("HippoEngine: v{}.{}", 0, 1);
+
         #ifdef HIPPO_CONFIG_DEBUG
-        std::cout << "Configuration: Debug" << std::endl;
+        HIPPO_DEBUG("Configuration: Debug");
         #endif
 
         #ifdef HIPPO_CONFIG_RELEASE
-        std::cout << "Configuration: Release" << std::endl;
+        HIPPO_DEBUG("Configuration: Release");
         #endif
 
         #ifdef HIPPO_PLATFORM_WINDOWS
-        std::cout << "Platform: Windows" << std::endl;
+        HIPPO_DEBUG("Platform: Windows");
         #endif
 
         #ifdef HIPPO_PLATFORM_LINUX
-        std::cout << "Platform: Linux" << std::endl;
+        HIPPO_DEBUG("Platform: Linux");
         #endif
     }
 
     Engine::Engine()
         : mIsRunning(false) 
+        , mIsInitialized(false)
     {
-        GetInfo();
+        
     }
 }

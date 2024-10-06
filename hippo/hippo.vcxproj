@@ -44,21 +44,21 @@
     <IntDir>..\obj\Debug\hippo\</IntDir>
     <TargetName>hippo</TargetName>
     <TargetExt>.lib</TargetExt>
-    <ExternalIncludePath>include;include\hippo;src;..\external\sdl2\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>include;include\hippo;src;..\external\sdl2\include;..\external\spdlog\include;..\external\glad\include;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\bin\Release\hippo\</OutDir>
     <IntDir>..\obj\Release\hippo\</IntDir>
     <TargetName>hippo</TargetName>
     <TargetExt>.lib</TargetExt>
-    <ExternalIncludePath>include;include\hippo;src;..\external\sdl2\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>include;include\hippo;src;..\external\sdl2\include;..\external\spdlog\include;..\external\glad\include;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <PreprocessorDefinitions>HIPPO_PLATFORM_WINDOWS;HIPPO_CONFIG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;HIPPO_PLATFORM_WINDOWS;HIPPO_CONFIG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -80,7 +80,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <PreprocessorDefinitions>HIPPO_PLATFORM_WINDOWS;HIPPO_CONFIG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;HIPPO_PLATFORM_WINDOWS;HIPPO_CONFIG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DebugInformationFormat>None</DebugInformationFormat>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -106,10 +106,24 @@
   <ItemGroup>
     <ClInclude Include="include\hippo\core\window.h" />
     <ClInclude Include="include\hippo\engine.h" />
+    <ClInclude Include="include\hippo\graphics\mesh.h" />
+    <ClInclude Include="include\hippo\graphics\rendercommands.h" />
+    <ClInclude Include="include\hippo\graphics\shader.h" />
+    <ClInclude Include="include\hippo\log.h" />
+    <ClInclude Include="include\hippo\managers\logmanager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\window.cpp" />
     <ClCompile Include="src\engine.cpp" />
+    <ClCompile Include="src\graphics\mesh.cpp" />
+    <ClCompile Include="src\graphics\rendercommands.cpp" />
+    <ClCompile Include="src\graphics\shader.cpp" />
+    <ClCompile Include="src\managers\logmanager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\external\glad\glad.vcxproj">
+      <Project>{DD62977C-C999-980D-7286-7E105E9C140F}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

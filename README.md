@@ -20,3 +20,26 @@ python cli.py run
 python cli.py buildsln run
 
 
+### Graphics pipeline
+
+- vbo
+- ebo
+- vao
+- meshes
+- shaders
+- hippo pipeline architecture
+
+
+#### vbo
+- contigous chunk of memory
+- lives on gpu
+- used to refresent any data you want your gpu/shaders to access
+- primarily used for:
+  - vertex positions
+  - textture uvs
+  - normals
+  - vertex colors
+  - etc.,
+- use single or multiple vbo:
+  - if data is static use single vbo
+  - if data is dynamic use multiple vbo

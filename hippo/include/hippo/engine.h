@@ -1,4 +1,5 @@
 #include "core/window.h"
+#include "managers/logmanager.h"
 
 namespace hippo {
 
@@ -11,14 +12,20 @@ namespace hippo {
 		inline void Quit() { mIsRunning = false; }
 
 	private:
-		Engine();
-		
 		void GetInfo();
 		[[nodiscard]] bool Initialize();
 		void Shutdown();
 
-		static Engine* mInstance;
-		core::Window mWindow;
+	private:
 		bool mIsRunning;
+		bool mIsInitialized;
+		core::Window mWindow;
+		
+		// managers
+		managers::LogManager mLogManager;
+
+		// singleton
+		static Engine* mInstance;
+		Engine();
 	};
 }

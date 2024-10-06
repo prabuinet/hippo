@@ -12,7 +12,11 @@ object_dir = "obj/%{cfg.buildcfg}/%{prj.name}"
 
 externals = {}
 externals["sdl2"] = "external/sdl2"
+externals["spdlog"] = "external/spdlog"
+externals["glad"] = "external/glad"
 
+-- process glad before anything else
+include "external/glad"
 
 project "hippo"
   location "hippo"
@@ -33,11 +37,17 @@ project "hippo"
     "%{prj.name}/include",
     "%{prj.name}/include/hippo",
     "%{prj.name}/src",
-    "%{externals.sdl2}/include"
+    "%{externals.sdl2}/include",
+    "%{externals.spdlog}/include",
+    "%{externals.glad}/include"
   }
   flags
   {
     "FatalWarnings"
+  }
+  defines 
+  {
+    "GLFW_INCLUDE_NONE",  -- ensures glad doesn't include glfw
   }
   filter { "system:windows", "configurations:*" }
     systemversion "latest"
@@ -51,7 +61,8 @@ project "hippo"
     }
     links
     {
-      "SDL2"
+      "SDL2",
+      "glad",
     }
   filter { "system:linux", "configurations:*" }
     defines 
@@ -82,7 +93,10 @@ project "hippoeditor"
   targetdir(target_dir)
   objdir(object_dir)  
   staticruntime "on"
-  links "hippo"
+  links {
+    "hippo",
+    "glad"
+  }
   files 
   {
     "%{prj.name}/src/**.h",
@@ -95,6 +109,7 @@ project "hippoeditor"
   externalincludedirs
   {
     "hippo/include",
+    "%{externals.spdlog}/include"
   }
   filter { "system:windows", "configurations:*" }
     systemversion "latest"
