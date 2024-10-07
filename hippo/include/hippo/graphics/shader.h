@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <unordered_map>
+#include <glad/glad.h>
 
 namespace hippo::graphics {
 	class Shader {

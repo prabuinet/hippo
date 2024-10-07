@@ -39,6 +39,8 @@
     <ClInclude Include="include\hippo\graphics\mesh.h" />
     <ClInclude Include="include\hippo\graphics\shader.h" />
     <ClInclude Include="include\hippo\graphics\rendercommands.h" />
+    <ClInclude Include="include\hippo\managers\rendermanager.h" />
+    <ClInclude Include="include\hippo\graphics\helpers.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\core\window.cpp">
@@ -53,5 +55,7 @@
     <ClCompile Include="src\graphics\mesh.cpp" />
     <ClCompile Include="src\graphics\shader.cpp" />
     <ClCompile Include="src\graphics\rendercommands.cpp" />
+    <ClCompile Include="include\hippo\managers\rendermanager.cpp" />
+    <ClCompile Include="src\graphics\helpers.cpp" />
   </ItemGroup>
 </Project>

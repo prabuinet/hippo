@@ -1,7 +1,6 @@
-#include "graphics/shader.h"
-#include <glad/glad.h>
 #include "log.h"
-
+#include "graphics/shader.h"
+#include "graphics/helpers.h"
 
 namespace hippo::graphics {
 
@@ -38,7 +37,7 @@ namespace hippo::graphics {
 			glShaderSource(fragmentShaderId, 1, &glSource, NULL);
 			glCompileShader(fragmentShaderId);
 
-			glGetShaderiv(fragmentShaderId, GL_COMPILE_STATUS, &status);
+			glGetShaderiv(fragmentShaderId, GL_COMPILE_STATUS, &status); HIPPO_CHECK_GL_ERROR;
 			if (status != GL_TRUE) {
 				glGetShaderInfoLog(fragmentShaderId, sizeof(errorLog), NULL, errorLog);
 				HIPPO_ERROR("Fragment shader compilation error: {}", errorLog);
@@ -55,7 +54,7 @@ namespace hippo::graphics {
 			glLinkProgram(mProgramId);
 			glValidateProgram(mProgramId);	
 
-			glGetShaderiv(mProgramId, GL_LINK_STATUS, &status);
+			glGetProgramiv(mProgramId, GL_LINK_STATUS, &status); HIPPO_CHECK_GL_ERROR;
 
 			if (status != GL_TRUE) {
 				glGetShaderInfoLog(mProgramId, sizeof(errorLog), NULL, errorLog);

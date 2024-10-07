@@ -11,10 +11,11 @@ namespace hippo::graphics {
 		void Bind();
 		void Unbind();
 
+		inline uint64_t GetVertexCount() const { return mVertexCount; }
+
 	private:
-		uint32_t mVertexCount;
+		uint64_t mVertexCount;
 		uint32_t mVao;
 		uint32_t mPositionVbo;
-
 	};
 }

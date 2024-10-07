@@ -1,5 +1,6 @@
 #include "graphics/mesh.h"
-#include <glad/glad.h>
+#include "graphics/helpers.h"
+#include "glad/glad.h"
 
 namespace hippo::graphics {
 
@@ -15,7 +16,7 @@ namespace hippo::graphics {
 		glBufferData(GL_ARRAY_BUFFER, vertexCount * dimensions * sizeof(float), vertexArray, GL_STATIC_DRAW);
 
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, dimensions, GL_FLOAT, GL_FALSE, 0, 0);
+		glVertexAttribPointer(0, static_cast<GLint>(dimensions), GL_FLOAT, GL_FALSE, 0, 0);
 		glDisableVertexAttribArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
